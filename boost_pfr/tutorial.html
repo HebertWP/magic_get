@@ -139,47 +139,51 @@
       printing of aggregates</a>
 </h3></div></div></div>
 <p>
-        The following example shows how to customize printing and write your own
-        testing helper for structures:
+        The following example shows how to write your own io-manipulator for printing:
       </p>
 <pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">pfr</span><span class="special">/</span><span class="identifier">ops</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
-<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">ostream</span><span class="special">&gt;</span>
 
-<span class="keyword">namespace</span> <span class="identifier">my_testing</span> <span class="special">{</span>
+<span class="keyword">namespace</span> <span class="identifier">my_ns</span> <span class="special">{</span>
 
-<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
-<span class="keyword">void</span> <span class="identifier">print_each</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="identifier">v</span><span class="special">;</span> <span class="special">}</span>
-<span class="keyword">void</span> <span class="identifier">print_each</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">uint8_t</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="keyword">static_cast</span><span class="special">&lt;</span><span class="keyword">unsigned</span><span class="special">&gt;(</span><span class="identifier">v</span><span class="special">);</span> <span class="special">}</span>
-<span class="keyword">void</span> <span class="identifier">print_each</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">int8_t</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="keyword">static_cast</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;(</span><span class="identifier">v</span><span class="special">);</span> <span class="special">}</span>
+<span class="keyword">namespace</span> <span class="identifier">detail</span> <span class="special">{</span>
+    <span class="comment">// Helpers to print individual values</span>
+    <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
+    <span class="keyword">void</span> <span class="identifier">print_each</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="identifier">v</span><span class="special">;</span> <span class="special">}</span>
+    <span class="keyword">void</span> <span class="identifier">print_each</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">uint8_t</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="keyword">static_cast</span><span class="special">&lt;</span><span class="keyword">unsigned</span><span class="special">&gt;(</span><span class="identifier">v</span><span class="special">);</span> <span class="special">}</span>
+    <span class="keyword">void</span> <span class="identifier">print_each</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">int8_t</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="keyword">static_cast</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;(</span><span class="identifier">v</span><span class="special">);</span> <span class="special">}</span>
 
-<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
-<span class="keyword">void</span> <span class="identifier">print</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">)</span> <span class="special">{</span>
-    <span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">sep</span> <span class="special">=</span> <span class="string">""</span><span class="special">;</span>
+    <span class="comment">// Structure to keep a reference to value, that will be ostreamed lower</span>
+    <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
+    <span class="keyword">struct</span> <span class="identifier">io_reference</span> <span class="special">{</span>
+        <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">;</span>
+    <span class="special">};</span>
 
-    <span class="identifier">boost</span><span class="special">::</span><span class="identifier">pfr</span><span class="special">::</span><span class="identifier">for_each_field</span><span class="special">(</span><span class="identifier">value</span><span class="special">,</span> <span class="special">[&amp;](</span><span class="keyword">const</span> <span class="keyword">auto</span><span class="special">&amp;</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span>
-        <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">exchange</span><span class="special">(</span><span class="identifier">sep</span><span class="special">,</span> <span class="string">", "</span><span class="special">);</span>
-        <span class="identifier">print_each</span><span class="special">(</span><span class="identifier">out</span><span class="special">,</span> <span class="identifier">v</span><span class="special">);</span>
-    <span class="special">});</span>
+    <span class="comment">// Output each field of io_reference::value</span>
+    <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="keyword">operator</span><span class="special">&lt;&lt;(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">out</span><span class="special">,</span> <span class="identifier">io_reference</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&amp;&amp;</span> <span class="identifier">x</span><span class="special">)</span> <span class="special">{</span>
+        <span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">sep</span> <span class="special">=</span> <span class="string">""</span><span class="special">;</span>
+
+        <span class="identifier">boost</span><span class="special">::</span><span class="identifier">pfr</span><span class="special">::</span><span class="identifier">for_each_field</span><span class="special">(</span><span class="identifier">x</span><span class="special">.</span><span class="identifier">value</span><span class="special">,</span> <span class="special">[&amp;](</span><span class="keyword">const</span> <span class="keyword">auto</span><span class="special">&amp;</span> <span class="identifier">v</span><span class="special">)</span> <span class="special">{</span>
+            <span class="identifier">out</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">exchange</span><span class="special">(</span><span class="identifier">sep</span><span class="special">,</span> <span class="string">", "</span><span class="special">);</span>
+            <span class="identifier">detail</span><span class="special">::</span><span class="identifier">print_each</span><span class="special">(</span><span class="identifier">out</span><span class="special">,</span> <span class="identifier">v</span><span class="special">);</span>
+        <span class="special">});</span>
+        <span class="keyword">return</span> <span class="identifier">out</span><span class="special">;</span>
+    <span class="special">}</span>
 <span class="special">}</span>
 
 <span class="comment">/// Usage:</span>
 <span class="comment">///     struct foo {std::uint8_t a, b;};</span>
-<span class="comment">///     foo get_foo();</span>
 <span class="comment">///     ...</span>
-<span class="comment">///     test_eq(foo{42, 22}, get_foo());</span>
+<span class="comment">///     std::cout &lt;&lt; my_ns::my_io(foo{42, 22});</span>
 <span class="comment">///</span>
-<span class="comment">/// Output:</span>
-<span class="comment">///     42, 22 != 42, 24</span>
+<span class="comment">/// Output: 42, 22</span>
 <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
-<span class="keyword">void</span> <span class="identifier">test_eq</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">x</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">y</span><span class="special">)</span> <span class="special">{</span>
-    <span class="keyword">if</span> <span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">pfr</span><span class="special">::</span><span class="identifier">eq</span><span class="special">(</span><span class="identifier">x</span><span class="special">,</span> <span class="identifier">y</span><span class="special">))</span> <span class="keyword">return</span><span class="special">;</span>
-
-    <span class="identifier">print</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span><span class="special">,</span> <span class="identifier">x</span><span class="special">);</span>
-    <span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span> <span class="special">&lt;&lt;</span> <span class="string">" != "</span><span class="special">;</span>
-    <span class="identifier">print</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span><span class="special">,</span> <span class="identifier">y</span><span class="special">);</span>
+<span class="keyword">auto</span> <span class="identifier">my_io</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">)</span> <span class="special">{</span>
+    <span class="keyword">return</span> <span class="identifier">detail</span><span class="special">::</span><span class="identifier">io_reference</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;{</span><span class="identifier">value</span><span class="special">};</span>
 <span class="special">}</span>
 
-<span class="special">}</span> <span class="comment">// namespace my_testing</span>
+<span class="special">}</span> <span class="comment">// namespace my_ns</span>
 </pre>
 </div>
 <div class="section">

@@ -49,7 +49,7 @@
 <span class="special">};</span>
 </pre>
 <p>
-      The library may work with aggregates other that simple ones, but the behavior
+      The library may work with aggregates other than simple ones, but the behavior
       tends to be unportable.
     </p>
 <h3>
@@ -91,9 +91,9 @@
 <td>
               <p>
                 Define to <code class="computeroutput"><span class="number">1</span></code> if you wish
-                to override Boost.FRR choice and use C++17 structured bindings for
+                to override Boost.PFR choice and use C++17 structured bindings for
                 reflection. Define to <code class="computeroutput"><span class="number">0</span></code>
-                to override Boost.FRR choice and disable C++17 structured bindings
+                to override Boost.PFR choice and disable C++17 structured bindings
                 usage.
               </p>
             </td>
@@ -107,9 +107,9 @@
 <td>
               <p>
                 Define to <code class="computeroutput"><span class="number">1</span></code> if you wish
-                to override Boost.FRR choice and exploit <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_active.html#2118" target="_top">CWG
+                to override Boost.PFR choice and exploit <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_active.html#2118" target="_top">CWG
                 2118</a> for reflection. Define to <code class="computeroutput"><span class="number">0</span></code>
-                to override Boost.FRR choice and disable CWG 2118 usage.
+                to override Boost.PFR choice and disable CWG 2118 usage.
               </p>
             </td>
 </tr>
@@ -123,7 +123,7 @@
               <p>
                 Define to <code class="computeroutput"><span class="number">0</span></code> if you are
                 hit by the template instantiation depth issues with <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">make_integer_sequence</span></code> and wish
-                to use Boost.PFR version of that metafunction. Define to <code class="computeroutput"><span class="number">1</span></code> to override Boost.FRR detection logic.
+                to use Boost.PFR version of that metafunction. Define to <code class="computeroutput"><span class="number">1</span></code> to override Boost.PFR detection logic.
               </p>
             </td>
 </tr>
@@ -172,7 +172,7 @@
                       <code class="computeroutput"><a class="link" href="../boost/pfr/structure_to_tuple.html" title="Function template structure_to_tuple">boost::pfr::structure_to_tuple</a></code>,
                       <code class="computeroutput"><a class="link" href="../boost/pfr/structure_tie.html" title="Function structure_tie">boost::pfr::structure_tie</a></code>,
                       <code class="computeroutput"><a class="link" href="../reference_section.html#header.boost.pfr.core_hpp" title="Header &lt;boost/pfr/core.hpp&gt;">boost::pfr::tuple_element</a></code>
-                      require T to be a flat POD type
+                      require T to be a POD type with built-in types only.
                     </li>
 </ul></div>
               </li>

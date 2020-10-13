@@ -157,7 +157,7 @@
     <span class="keyword">auto</span> <span class="identifier">friend_info</span> <span class="special">=</span> <span class="identifier">ask_user_for_friend</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">info</span><span class="special">));</span>
 
     <span class="identifier">db</span><span class="special">::</span><span class="identifier">insert</span><span class="special">(</span>
-        <span class="string">"INSERT INTO user_infos(id, name, github_stars, email) VALUES ($0, $1, $2, $3)"</span><span class="special">,</span>
+        <span class="string">"INSERT INTO user_infos(id, name, email, login) VALUES ($0, $1, $2, $3)"</span><span class="special">,</span>
         <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">id</span><span class="special">),</span>    <span class="comment">////////////////////////////////////////////////</span>
         <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">name</span><span class="special">),</span>  <span class="comment">// Users are forced to move individual fields</span>
         <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">friend_info</span><span class="special">.</span><span class="identifier">email</span><span class="special">),</span> <span class="comment">// because your library can not iterate over</span>
@@ -195,7 +195,7 @@
     <span class="keyword">auto</span> <span class="identifier">friend_info</span> <span class="special">=</span> <span class="identifier">ask_user_for_friend</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">info</span><span class="special">));</span>
 
     <span class="identifier">db</span><span class="special">::</span><span class="identifier">insert</span><span class="special">(</span>
-        <span class="string">"INSERT INTO user_infos(id, name, github_stars, email) VALUES ($0, $1, $2, $3)"</span><span class="special">,</span>
+        <span class="string">"INSERT INTO user_infos(id, name, email, login) VALUES ($0, $1, $2, $3)"</span><span class="special">,</span>
         <span class="identifier">friend_info</span>     <span class="comment">//////////////////////////////////////////////////////////////</span>
                         <span class="comment">// Boost.PFR allows you to iterate over all the fields of a</span>
                         <span class="comment">// user provided structure</span>
@@ -265,7 +265,7 @@
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"><p><small>Last revised: October 12, 2020 at 19:24:38 GMT</small></p></td>
+<td align="left"><p><small>Last revised: October 13, 2020 at 19:40:53 GMT</small></p></td>
 <td align="right"><div class="copyright-footer"></div></td>
 </tr></table>
 <hr>

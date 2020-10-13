@@ -41,7 +41,7 @@
             </th>
 <th>
               <p>
-                Functions reference:
+                Reference:
               </p>
             </th>
 </tr></thead>
@@ -84,7 +84,19 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="../reference_section.html#header.boost.pfr.ops_hpp" title="Header &lt;boost/pfr/ops.hpp&gt;">Header boost/pfr/ops.hpp</a></code>
+                <code class="computeroutput"><a class="link" href="../reference_section.html#header.boost.pfr.ops_hpp" title="Header &lt;boost/pfr/ops.hpp&gt;">Header boost/pfr/ops.hpp</a></code>:
+              </p>
+              <p>
+                * <code class="computeroutput"><a class="link" href="../boost/pfr/eq.html" title="Function eq">boost::pfr::eq</a></code>
+              </p>
+              <p>
+                * <code class="computeroutput"><a class="link" href="../boost/pfr/ne.html" title="Function ne">boost::pfr::ne</a></code>
+              </p>
+              <p>
+                * <code class="computeroutput"><a class="link" href="../boost/pfr/gt.html" title="Function gt">boost::pfr::gt</a></code>
+              </p>
+              <p>
+                * ...
               </p>
             </td>
 </tr>
@@ -163,8 +175,27 @@
             </td>
 <td>
               <p>
-                <code class="computeroutput"><a class="link" href="../reference_section.html#header.boost.pfr.ops_hpp" title="Header &lt;boost/pfr/ops.hpp&gt;">Header boost/pfr/ops_fields.hpp
+                <code class="computeroutput"><a class="link" href="../reference_section.html#header.boost.pfr.ops_fields_hpp" title="Header &lt;boost/pfr/ops_fields.hpp&gt;">Header boost/pfr/ops_fields.hpp
+                </a></code>:
+              </p>
+              <p>
+                * <code class="computeroutput"><a class="link" href="../boost/pfr/eq_fields.html" title="Function template eq_fields">boost::pfr::eq_fields</a></code>
+              </p>
+              <p>
+                * <code class="computeroutput"><a class="link" href="../boost/pfr/ne_fields.html" title="Function template ne_fields">boost::pfr::ne_fields</a></code>
+              </p>
+              <p>
+                * <code class="computeroutput"><a class="link" href="../boost/pfr/gt_fields.html" title="Function template gt_fields">boost::pfr::gt_fields</a></code>
+              </p>
+              <p>
+                * ...
+              </p>
+              <p>
+                <code class="computeroutput"><a class="link" href="../reference_section.html#header.boost.pfr.io_fields_hpp" title="Header &lt;boost/pfr/io_fields.hpp&gt;">Header boost/pfr/io_fields.hpp
                 </a></code>
+              </p>
+              <p>
+                * <code class="computeroutput"><a class="link" href="../boost/pfr/io_fields.html" title="Function template io_fields">boost::pfr::io_fields</a></code>
               </p>
             </td>
 </tr>
@@ -197,7 +228,9 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="keyword">struct</span> <span class="identifier">some</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span><span class="identifier">b</span><span class="special">,</span><span class="identifier">c</span><span class="special">,</span><span class="identifier">d</span><span class="special">,</span><span class="identifier">e</span><span class="special">;</span> <span class="special">};</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting fields count of some structure</span>
+
+<span class="keyword">struct</span> <span class="identifier">some</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span><span class="identifier">b</span><span class="special">,</span><span class="identifier">c</span><span class="special">,</span><span class="identifier">d</span><span class="special">,</span><span class="identifier">e</span><span class="special">;</span> <span class="special">};</span>
 
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Fields count in structure: "</span>
     <span class="special">&lt;&lt;</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">pfr</span><span class="special">::</span><span class="identifier">tuple_size</span><span class="special">&lt;</span><span class="identifier">some</span><span class="special">&gt;::</span><span class="identifier">value</span>  <span class="comment">// Outputs: 5</span>
@@ -234,7 +267,9 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">;</span> <span class="special">};</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a tuple of references to structure fields</span>
+
+<span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">;</span> <span class="special">};</span>
 <span class="keyword">struct</span> <span class="identifier">other</span> <span class="special">{</span>
     <span class="keyword">char</span> <span class="identifier">c</span><span class="special">;</span>
     <span class="identifier">foo</span> <span class="identifier">f</span><span class="special">;</span>
