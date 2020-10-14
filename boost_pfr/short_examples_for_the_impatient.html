@@ -245,7 +245,9 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">;</span> <span class="special">};</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a std::tuple of values from structures fields</span>
+
+<span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">;</span> <span class="special">};</span>
 <span class="keyword">struct</span> <span class="identifier">other</span> <span class="special">{</span>
     <span class="keyword">char</span> <span class="identifier">c</span><span class="special">;</span>
     <span class="identifier">foo</span> <span class="identifier">nested</span><span class="special">;</span>
@@ -267,7 +269,7 @@
 </tr>
 <tr>
 <td>
-<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a tuple of references to structure fields</span>
+<pre xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="table-programlisting"><span class="comment">// Getting a std::tuple of references to structure fields</span>
 
 <span class="keyword">struct</span> <span class="identifier">foo</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">b</span><span class="special">;</span> <span class="special">};</span>
 <span class="keyword">struct</span> <span class="identifier">other</span> <span class="special">{</span>

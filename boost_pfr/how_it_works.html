@@ -35,7 +35,7 @@
           user-provided structure
           <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-                C++17:
+                <span class="bold"><strong>BOOST_PFR_USE_CPP17 == 1</strong></span>:
                 <div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
                       at compile-time: structured bindings are used to decompose
                       a type <code class="computeroutput"><span class="identifier">T</span></code> to
@@ -43,7 +43,8 @@
                     </li></ol></div>
               </li>
 <li class="listitem">
-                C++14:
+                <span class="bold"><strong>BOOST_PFR_USE_CPP17 == 0 &amp;&amp; BOOST_PFR_USE_LOOPHOLE
+                == 1</strong></span>:
                 <div class="orderedlist"><ol class="orderedlist" type="a">
 <li class="listitem">
                       at compile-time: use aggregate initialization to detect fields
@@ -73,7 +74,8 @@
 </ol></div>
               </li>
 <li class="listitem">
-                C++14 with disabled <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"><span class="bold"><strong>BOOST_PFR_USE_LOOPHOLE</strong></span></a>:
+                <span class="bold"><strong>BOOST_PFR_USE_CPP17 == 0 &amp;&amp; BOOST_PFR_USE_LOOPHOLE
+                == 0</strong></span>:
                 <div class="orderedlist"><ol class="orderedlist" type="a">
 <li class="listitem">
                       at compile-time: let <code class="computeroutput"><span class="identifier">I</span></code>
@@ -134,9 +136,9 @@
 <p>
       Long description of some basics: <a href="https://youtu.be/UlNUNxLtBI0" target="_top">Antony
       Polukhin: Better C++14 reflections</a>. Long description of some basics
-      of C++14 with disabled <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"><span class="bold"><strong>BOOST_PFR_USE_LOOPHOLE</strong></span></a>: <a href="https://youtu.be/abdeAew3gmQ" target="_top">Antony
+      of C++14 with <a class="link" href="limitations_and_configuration.html" title="Limitations and Configuration"><span class="bold"><strong>BOOST_PFR_USE_LOOPHOLE == 0</strong></span></a>: <a href="https://youtu.be/abdeAew3gmQ" target="_top">Antony
       Polukhin: C++14 Reflections Without Macros, Markup nor External Tooling</a>.
-      Description of the <span class="bold"><strong>BOOST_PFR_USE_LOOPHOLE</strong></span>
+      Description of the <span class="bold"><strong>BOOST_PFR_USE_LOOPHOLE == 1</strong></span>
       technique by its inventor Alexandr Poltavsky <a href="http://alexpolt.github.io/type-loophole.html" target="_top">in
       his blog</a>.
     </p>

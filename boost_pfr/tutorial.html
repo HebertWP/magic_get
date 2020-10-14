@@ -96,12 +96,12 @@
         and assignments.
       </p>
 <p>
-        Because of the above issues many guidelines recommend to <span class="bold"><strong>use
+        Because of the above issues some guidelines recommend to <span class="bold"><strong>use
         aggregates instead of tuples</strong></span>. However aggregates fail when it
         comes to the functional like programming.
       </p>
 <p>
-        PFR library <span class="bold"><strong>provides tuple like methods for aggregate
+        Boost.PFR library <span class="bold"><strong>provides tuple like methods for aggregate
         initializable structures</strong></span>, making aggregates usable in contexts
         where only tuples were useful.
       </p>
@@ -146,6 +146,15 @@
 
 <span class="keyword">namespace</span> <span class="identifier">my_ns</span> <span class="special">{</span>
 
+<span class="comment">/// Usage:</span>
+<span class="comment">///     struct foo {std::uint8_t a, b;};</span>
+<span class="comment">///     ...</span>
+<span class="comment">///     std::cout &lt;&lt; my_ns::my_io(foo{42, 22});</span>
+<span class="comment">///</span>
+<span class="comment">/// Output: 42, 22</span>
+<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="keyword">auto</span> <span class="identifier">my_io</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">);</span>
+
 <span class="keyword">namespace</span> <span class="identifier">detail</span> <span class="special">{</span>
     <span class="comment">// Helpers to print individual values</span>
     <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
@@ -172,12 +181,7 @@
     <span class="special">}</span>
 <span class="special">}</span>
 
-<span class="comment">/// Usage:</span>
-<span class="comment">///     struct foo {std::uint8_t a, b;};</span>
-<span class="comment">///     ...</span>
-<span class="comment">///     std::cout &lt;&lt; my_ns::my_io(foo{42, 22});</span>
-<span class="comment">///</span>
-<span class="comment">/// Output: 42, 22</span>
+<span class="comment">// Definition:</span>
 <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
 <span class="keyword">auto</span> <span class="identifier">my_io</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span><span class="special">&amp;</span> <span class="identifier">value</span><span class="special">)</span> <span class="special">{</span>
     <span class="keyword">return</span> <span class="identifier">detail</span><span class="special">::</span><span class="identifier">io_reference</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;{</span><span class="identifier">value</span><span class="special">};</span>
@@ -483,16 +487,16 @@
 <span class="special">}</span>
 </pre>
 <p>
-        Reflection of unions is disabled for safety reasons. There's a way to get
-        the first member of a union and use it. Unfortunately there's no way to find
-        out <span class="bold"><strong>active</strong></span> member of a union. Accessing
-        an inactive union member is an Undefined Behavior. Using the first union
-        member could lead to disaster if it is some character pointer. For example
-        ostreaming <code class="computeroutput"><span class="keyword">union</span> <span class="special">{</span><span class="keyword">char</span><span class="special">*</span> <span class="identifier">c</span><span class="special">;</span> <span class="keyword">long</span> <span class="keyword">long</span>
+        Reflection of unions is disabled in the Boost.PFR library for safety reasons.
+        Alas, there's no way to find out <span class="bold"><strong>active</strong></span>
+        member of a union and accessing an inactive member is an Undefined Behavior.
+        For example, library could always return the first member, but ostreaming
+        <code class="computeroutput"><span class="identifier">u</span></code> in <code class="computeroutput"><span class="keyword">union</span>
+        <span class="special">{</span><span class="keyword">char</span><span class="special">*</span> <span class="identifier">c</span><span class="special">;</span>
+        <span class="keyword">long</span> <span class="keyword">long</span>
         <span class="identifier">ll</span><span class="special">;</span> <span class="special">}</span> <span class="identifier">u</span><span class="special">;</span>
-        <span class="identifier">u</span><span class="special">.</span><span class="identifier">ll</span><span class="special">=</span> <span class="number">1</span><span class="special">;</span></code> will crash your program, as the active member
-        is <code class="computeroutput"><span class="identifier">ll</span></code> that holds <code class="computeroutput"><span class="number">1</span></code> but we are trying to output a <code class="computeroutput"><span class="keyword">char</span><span class="special">*</span></code>. This
-        would cause an invalid pointer dereference.
+        <span class="identifier">u</span><span class="special">.</span><span class="identifier">ll</span><span class="special">=</span> <span class="number">1</span><span class="special">;</span></code> will crash your program with an invalid
+        pointer dereference.
       </p>
 <p>
         Any attempt to reflect unions leads to a compile time error. In many cases
