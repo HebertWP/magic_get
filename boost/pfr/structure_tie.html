@@ -26,7 +26,7 @@
 <a name="boost.pfr.structure_tie"></a><div class="titlepage"></div>
 <div class="refnamediv">
 <h2><span class="refentrytitle">Function structure_tie</span></h2>
-<p>boost::pfr::structure_tie — Creates a <code class="computeroutput">std::tuple</code> with const lvalue references to fields of an <a class="link" href="../../boost_pfr/limitations_and_configuration.html" title="Limitations and Configuration"> simple aggregate </a> T. </p>
+<p>boost::pfr::structure_tie — std::tie` like function that ties fields of a structure. </p>
 </div>
 <h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
 <div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="comment">// In header: &lt;<a class="link" href="../../reference_section.html#header.boost.pfr.core_hpp" title="Header &lt;boost/pfr/core.hpp&gt;">boost/pfr/core.hpp</a>&gt;
@@ -46,8 +46,9 @@
   <span class="identifier">structure_tie</span><span class="special">(</span><span class="identifier">T</span> <span class="special">&amp;&amp;</span><span class="special">,</span> 
                 <span class="identifier">std</span><span class="special">::</span><span class="identifier">enable_if_t</span><span class="special">&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">is_rvalue_reference</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&amp;&amp;</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span> <span class="special">&gt;</span> <span class="special">*</span> <span class="special">=</span> <span class="number">0</span><span class="special">)</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm45419674024176"></a><h2>Description</h2>
-<p><span class="bold"><strong>Example:</strong></span> </p>
+<a name="idm45163059761136"></a><h2>Description</h2>
+<p>
+<span class="bold"><strong>Example:</strong></span> </p>
 <pre class="programlisting"><span class="keyword">void</span> <span class="identifier">foo</span><span class="special">(</span><span class="keyword">const</span> <span class="keyword">int</span><span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="keyword">short</span><span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
 <span class="keyword">struct</span> <span class="identifier">my_struct</span> <span class="special">{</span> <span class="keyword">int</span> <span class="identifier">i</span><span class="special">,</span> <span class="keyword">short</span> <span class="identifier">s</span><span class="special">;</span> <span class="special">}</span><span class="special">;</span>
 
@@ -59,6 +60,13 @@
 <span class="identifier">assert</span><span class="special">(</span><span class="identifier">s</span><span class="special">.</span><span class="identifier">s</span> <span class="special">==</span> <span class="number">11</span><span class="special">)</span><span class="special">;</span>
 </pre>
 <p> </p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term">Returns:</span></p></td>
+<td><p>a <code class="computeroutput">std::tuple</code> with lvalue and const lvalue references to fields of an <a class="link" href="../../boost_pfr/limitations_and_configuration.html" title="Limitations and Configuration"> simple aggregate </a> <code class="computeroutput">val</code>.</p></td>
+</tr></tbody>
+</table></div>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>

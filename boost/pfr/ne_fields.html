@@ -34,16 +34,15 @@
 </span>
 <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">,</span> <span class="keyword">typename</span> U<span class="special">&gt;</span> <span class="keyword">bool</span> <span class="identifier">ne_fields</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> lhs<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">U</span> <span class="special">&amp;</span> rhs<span class="special">)</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm45419672439584"></a><h2>Description</h2>
+<a name="idm45163058160240"></a><h2>Description</h2>
 <p>Does a field-by-field inequality comparison.</p>
-<p>Let MIN be std::min(tuple_size_v&lt;T&gt;, tuple_size_v&lt;U&gt;). Let <span class="emphasis"><em>lhs-fields</em></span> and <span class="emphasis"><em>rhs-fields</em></span> be the tuples of MIN fields of lhs and rhs correspondingly.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
 <tbody><tr>
 <td><p><span class="term">Returns:</span></p></td>
-<td><p><code class="computeroutput">std::tie( _lhs-fields_ ) != std::tie( _rhs-fields_ ) || tuple_size_v&lt;T&gt; != tuple_size_v&lt;U&gt;</code> </p></td>
+<td><p><code class="computeroutput">L != R || tuple_size_v&lt;T&gt; != tuple_size_v&lt;U&gt;</code>, where <code class="computeroutput">L</code> and <code class="computeroutput">R</code> are the results of calling <code class="computeroutput">std::tie</code> on first <code class="computeroutput">N</code> fields of <code class="computeroutput">lhs</code> and </p></td>
 </tr></tbody>
 </table></div>
 </div>
