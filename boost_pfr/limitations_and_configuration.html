@@ -38,19 +38,29 @@
       </p></td></tr>
 </table></div>
 <p>
-      Boost.PFR library works best with <span class="bold"><strong>simple aggregates</strong></span>
-      - non-inherited aggregate initializable structures without const fields, C
-      arrays nor static variables:
+      Boost.PFR library works with types that satisfy the requirements of <code class="computeroutput"><span class="identifier">SimpleAggregare</span></code>: aggregate types without
+      base classes, <code class="computeroutput"><span class="keyword">const</span></code> fields, references,
+      or C arrays:
     </p>
-<pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">simple_aggregate</span> <span class="special">{</span>
+<pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">simple_aggregate</span> <span class="special">{</span>  <span class="comment">// SimpleAggregare</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">name</span><span class="special">;</span>
+    <span class="keyword">int</span> <span class="identifier">age</span><span class="special">;</span>
+    <span class="identifier">boost</span><span class="special">::</span><span class="identifier">uuids</span><span class="special">::</span><span class="identifier">uuid</span> <span class="identifier">uuid</span><span class="special">;</span>
+<span class="special">};</span>
+
+<span class="keyword">struct</span> <span class="identifier">empty</span> <span class="special">{</span>             <span class="comment">// SimpleAggregare</span>
+<span class="special">};</span>
+
+<span class="keyword">struct</span> <span class="identifier">aggregate</span> <span class="special">:</span> <span class="identifier">empty</span> <span class="special">{</span> <span class="comment">// not a SimpleAggregare</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">name</span><span class="special">;</span>
     <span class="keyword">int</span> <span class="identifier">age</span><span class="special">;</span>
     <span class="identifier">boost</span><span class="special">::</span><span class="identifier">uuids</span><span class="special">::</span><span class="identifier">uuid</span> <span class="identifier">uuid</span><span class="special">;</span>
 <span class="special">};</span>
 </pre>
 <p>
-      The library may work with aggregates other than simple ones, but the behavior
-      tends to be unportable.
+      The library may work with aggregates that don't satisfy the requirements of
+      <code class="computeroutput"><span class="identifier">SimpleAggregare</span></code>, but the behavior
+      tends to be non-portable.
     </p>
 <h3>
 <a name="boost_pfr.limitations_and_configuration.h0"></a>
